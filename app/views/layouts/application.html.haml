@@ -25,7 +25,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Classifieds
+          = link_to "Classifieds", root_path, class: "brand"
           .container.nav-collapse
             %ul.nav
               %li= link_to "Link 1", "/path1"
@@ -45,7 +45,7 @@
         .span9
           = bootstrap_flash
           = yield
-    
+
       %footer
         %p &copy; Company 2013
     /

@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'pg'
 gem 'jquery-rails'
+gem 'haml-rails'
+gem 'mechanize'
+gem 'twitter-bootstrap-rails'
 
 
 group :assets do

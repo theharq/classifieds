@@ -4,6 +4,8 @@ class Classified < ActiveRecord::Base
 
   attr_accessible :content
 
+  default_scope order('id')
+
   validates :content, presence: true
   validates :content, uniqueness: true
 end

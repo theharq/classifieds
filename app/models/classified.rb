@@ -8,4 +8,8 @@ class Classified < ActiveRecord::Base
 
   validates :content, presence: true
   validates :content, uniqueness: true
+
+  def self.searchable_language
+    'spanish'
+  end
 end

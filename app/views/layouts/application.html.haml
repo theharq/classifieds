@@ -11,7 +11,7 @@
               - Section.all.each do |section|
                 %li.nav-header= section.name
                 - section.categories.each do |category|
-                  %li= link_to category.name, pages_path(category: category)
+                  %li= link_to category.name, pages_path(category: category), method: :post, remote: true
         .span9
           = bootstrap_flash
           = yield

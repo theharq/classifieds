@@ -1,4 +1,5 @@
-%p Clasificados
-%ol
-  -@classifieds.each do |classified|
-    %li= classified.content
+= form_tag pages_path, remote: true, class: "navbar-search pull-rignt" do
+  %input.search-query{placeholder: "Buscar", type: "text", name: "keyword"}
+%hr
+.result-list
+  = render "list", classifieds: @classifieds

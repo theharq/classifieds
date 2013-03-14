@@ -19,4 +19,31 @@ describe PagesController, "Actions" do
     end
   end
 
+  describe "on POST #create" do
+    before(:each) do
+      @category = FactoryGirl.create(:category)
+      @classified = @category.classifieds.create(FactoryGirl.attributes_for(:classified))
+    end
+    it "should assign classifieds is category params is sent" do
+      xhr :post, :create, category: @category.id
+      assigns(:classifieds).should_not be_nil
+    end
+    it "should assign classifieds is keyword params is sent" do
+      xhr :post, :create, keyword: "classified"
+      assigns(:classifieds).should_not be_nil
+    end
+    it "should get the classifieds from the category" do
+      xhr :post, :create, category: @category.id
+      assigns(:classifieds).last.content.should == @classified.content
+    end
+    it "should get the classifieds from the keyword" do
+      xhr :post, :create, keyword: "classified"
+      assigns(:classifieds).last.content.should == @classified.content
+    end
+  end
+
+
+
+
+
 end

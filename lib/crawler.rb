@@ -2,23 +2,24 @@ class Crawler
 
   LAST_PAGE_LINK = "\u00FAltima \u00BB"
 
-  def self.get_ads_by_section(url)
-    crawler = Crawler.new
-    agent = crawler.agent
-    page = agent.get(url)
-
-    classifieds = crawler.get_list_ads(page)
-
-    last_page_number = crawler.get_last_page(page)
+  def load_ads_by_category(category)
+    agent = self.agent
+    page = agent.get(category.url) # Get the current page of the category
+    load_list_ads(page,category) # Load the first page of classifieds
+    last_page_number = get_last_page(page) # Get the last page number
 
     if last_page_number.present?
       for pg_number in 1..last_page_number do
-        page = agent.get("#{url}&page=#{pg_number}")
-        classifieds =  classifieds | crawler.get_list_ads(page)
+        page = agent.get("#{category.url}&page=#{pg_number}")
+        load_list_ads(page,category)
       end
     end
+  end
 
-    classifieds
+  def load_list_ads(page, category)
+    Nokogiri::HTML(page.body, 'UTF-8').search("ul.display_result li .datos").each do |item_list|
+      category.classifieds.create(content: item_list.css('p').text)
+    end
   end
 
   def self.get_sections_and_categories(name, url)
@@ -37,20 +38,6 @@ class Crawler
 
       section = newspaper.sections.where(name:section_name).first_or_create
       category = section.categories.where(name: category_name, url: category_url).first_or_create
-    end
-  end
-
-  def get_list_ads(page)
-    classifieds = []
-    Nokogiri::HTML(page.body, 'UTF-8').search("ul.display_result li .datos").each do |item_list|
-      classifieds << Classified.new(content: item_list.css('p').text)
-    end
-    classifieds
-  end
-
-  def load_list_ads(page, category)
-    Nokogiri::HTML(page.body, 'UTF-8').search("ul.display_result li .datos").each do |item_list|
-      category.classifieds.create(content: item_list.css('p').text)
     end
   end
 

@@ -4,14 +4,12 @@ namespace :classified_ads_data do
   task :get_classifieds => :environment do
     Classified.destroy_all
     crawler = Crawler.new
-    agent = crawler.agent
 
     Newspaper.all.each do |newspaper|
       newspaper.sections.each do |section|
         section.categories.each do |category|
           puts "loading #{category.name}.."
-          page = agent.get(category.url)
-          crawler.load_list_ads(page, category)
+          crawler.load_ads_by_category(category)
         end
       end
     end

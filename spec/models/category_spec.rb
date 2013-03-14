@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Category, "Relations" do
+  it { should have_many :classifieds }
   it { should belong_to :section }
 end
 

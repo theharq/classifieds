@@ -20,6 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rails_best_practices'
   gem 'rspec-rails'
+  gem 'vcr'
 end
 
 group :test do

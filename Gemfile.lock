@@ -172,6 +172,7 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.6)
+    vcr (2.4.0)
     webrobots (0.1.0)
 
 PLATFORMS
@@ -193,3 +194,4 @@ DEPENDENCIES
   simplecov
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  vcr

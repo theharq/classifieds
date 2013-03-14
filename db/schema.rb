@@ -11,12 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313124502) do
+ActiveRecord::Schema.define(:version => 20130314010024) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "section_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["section_id"], :name => "index_categories_on_section_id"
 
   create_table "classifieds", :force => true do |t|
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "newspapers", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sections", :force => true do |t|
+    t.string   "name"
+    t.integer  "newspaper_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "sections", ["newspaper_id"], :name => "index_sections_on_newspaper_id"
 
 end

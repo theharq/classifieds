@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'mechanize'
 gem 'twitter-bootstrap-rails'
-
+gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

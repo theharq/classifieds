@@ -48,6 +48,12 @@ class Crawler
     classifieds
   end
 
+  def load_list_ads(page, category)
+    Nokogiri::HTML(page.body, 'UTF-8').search("ul.display_result li .datos").each do |item_list|
+      category.classifieds.create(content: item_list.css('p').text)
+    end
+  end
+
   def get_last_page(page)
     last_page_link = page.link_with(:text => LAST_PAGE_LINK )
     return last_page_link.present? ? last_page_link.href.match(/page=(\d+)/)[1].to_i : nil

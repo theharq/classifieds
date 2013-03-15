@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+.loading{
+  background:rgba(255,255,255,0.85) url(/assets/ajax-loader.gif) no-repeat center;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  -moz-box-shadow:0 0 4px rgba(0,0,0,0.3);
+  -webkit-box-shadow:0 0 4px rgba(0,0,0,0.3);
+  box-shadow:0 0 4px rgba(0,0,0,0.3);
+  bottom:0;
+  height:120px;
+  left:0;
+  margin:auto;
+  position:fixed;
+  right:0;
+  top:0;
+  width:120px;
+  z-index:999;
+}

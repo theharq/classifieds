@@ -1,3 +1,8 @@
-%ol
-  -classifieds.each do |classified|
-    %li= classified.content
+- if classifieds.any?
+  %ol
+    -classifieds.each do |classified|
+      %li
+        = classified.content
+        %hr
+- else
+  %p No hay Clasificados que mostrar

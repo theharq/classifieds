@@ -1,4 +1,4 @@
-namespace :classified_ads_data do
+namespace :classifieds do
 
   desc "Iterates through each newspaper, section and categories, fetching the classified ads"
   task :get_classifieds => :environment do
@@ -13,6 +13,18 @@ namespace :classified_ads_data do
         end
       end
     end
-
   end
+
+  desc "Iterates through each newspaper, section and categories, fetching the classified ads"
+  task :alert_classifieds => :environment do
+    Alert.all.each do |alert|
+      puts "alerts for #{alert.email}.."
+      classifieds = []
+      alert.keywords.split(",").each do |keyword|
+        classifieds =  classifieds | Classified.where("category_id = ?", alert.category_id).basic_search(content: keyword)
+      end
+      AlertMailer.alert_match(alert, classifieds).deliver
+    end
+  end
+
 end

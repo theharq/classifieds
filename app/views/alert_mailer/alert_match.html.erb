@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hola</h1>
+    <p>
+      Listado de coincidencias para <%= Date.today %>
+    </p>
+    <ul>
+      <% @classifieds.each do |classified| %>
+        <li><%= classified.content %></li>
+      <% end %>
+    </ul>
+    <p>Gracias</p>
+  </body>
+</html>

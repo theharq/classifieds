@@ -3,4 +3,6 @@
     = f.email_field :email, placeholder: 'Digite su Email'
   %fieldset
     = f.text_field :keywords, class: "input-tag"
+  %fieldset
+    = f.select :category_id, option_groups_from_collection_for_select(Section.all, :categories, :name, :id, :name, 91)
   = f.submit "Crear Alerta"

@@ -1,5 +1,6 @@
 class Alert < ActiveRecord::Base
-  attr_accessible :email, :keywords
+  belongs_to :category
+  attr_accessible :email, :keywords, :category_id
 
   validates :email, presence: true, uniqueness: true
   validates :keywords, presence: true

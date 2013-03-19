@@ -1,0 +1,6 @@
+= form_for @alert do |f|
+  %fieldset
+    = f.email_field :email, placeholder: 'Digite su Email'
+  %fieldset
+    = f.text_field :keywords, class: "input-tag"
+  = f.submit "Crear Alerta"

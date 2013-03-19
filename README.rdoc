@@ -9,9 +9,13 @@ Run from your rails console (Ex: my local newspaper name as the first parameter 
 
     Crawler.get_sections_and_categories("El Heraldo", "http://clasificados.elheraldo.co/")
 
-And then schedule the following rake task:
+Schedule the task to retrieve the classified ads:
 
-    rake classified_ads_data:get_classifieds
+    rake classifieds:get_classifieds
+
+Schedule the task to send the alerts:
+
+    rake classifieds:alert_classifieds
 
 == Usage
 

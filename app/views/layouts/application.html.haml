@@ -6,18 +6,12 @@
     .container-fluid
       .row-fluid
         .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              - Section.all.each do |section|
-                %li.nav-header= section.name
-                - section.categories.each do |category|
-                  %li= link_to category.name, pages_path(category: category), method: :post, remote: true
+          = render "shared/sidebar_menu"
         .span9
           = bootstrap_flash
           = yield
       .loading.hide
-      %footer
-        %p &copy; Footer blablablabla
+      = render "shared/footer"
     /
       Javascripts
       \==================================================

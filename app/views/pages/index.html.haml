@@ -1,7 +1,3 @@
-= form_tag pages_path, remote: true, class: "form-search" do
-  %input.search-query{placeholder: "Ej: Apartaestudio", type: "text", name: "keyword"}
-  %button.btn{type: "submit"} Buscar
-
 %hr
 .result-list
   = render "list", classifieds: @classifieds

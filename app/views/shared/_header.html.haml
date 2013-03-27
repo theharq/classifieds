@@ -9,6 +9,7 @@
       .container.nav-collapse
         %ul.nav
           %li= link_to "Crear Alerta", new_alert_path, "data-target" => "#modal-window", "data-toggle" => "modal"
+          %li= link_to "Editar Alerta", alerts_path, "data-target" => "#modal-window", "data-toggle" => "modal"
         = form_tag pages_path, remote: true, class: "navbar-search pull-right" do
           %input.search-query{placeholder: "Ej: Apartaestudio", type: "text", name: "keyword"}
           %button.btn{type: "submit"} Buscar

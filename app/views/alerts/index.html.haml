@@ -1,0 +1,9 @@
+= form_tag search_alerts_path, remote: true, class: "form-horizontal" do
+  #flashes
+    = bootstrap_flash
+  .control-group
+    = label_tag :email, "Email", class: "control-label"
+    .controls
+      = email_field_tag :email, nil, placeholder: 'Digite su Email'
+  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+  = submit_tag "Buscar Alerta", class: "btn btn-primary pull-right"

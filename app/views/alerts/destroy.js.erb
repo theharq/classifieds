@@ -1,0 +1,4 @@
+$('#flashes').html("<%= escape_javascript(bootstrap_flash)%>");
+<% if @alert.destroyed? %>
+  setTimeout(function(){$('#modal-window').modal('hide');},1000);
+<% end %>

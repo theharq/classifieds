@@ -12,9 +12,10 @@
   .control-group
     = f.label :category_id, "Categoria", class: "control-label"
     .controls
-      = f.select :category_id, option_groups_from_collection_for_select(Section.all, :categories, :name, :id, :name)
+      = f.grouped_collection_select :category_id, Section.all, :categories, :name, :id, :name
   %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
-  = f.submit "Guardar", class: "btn btn-primary pull-right"
+  = link_to "Eliminar", alert_path(@alert), class: "btn btn-danger", method: :delete, remote: true
+  = f.submit "Actualizar", class: "btn btn-primary pull-right"
 
 :javascript
   $(function(){

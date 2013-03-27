@@ -1,0 +1,8 @@
+<% if @alert.present? %>
+  $('#modal-window').modal("hide")
+  setTimeout(function(){
+    $('#modal-window').modal({remote: "<%= edit_alert_path(@alert) %>"})
+  },800);
+<% else %>
+  $('#flashes').html("<%= escape_javascript(bootstrap_flash)%>");
+<% end %>

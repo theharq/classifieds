@@ -15,7 +15,7 @@ namespace :classifieds do
     end
   end
 
-  desc "Iterates through each newspaper, section and categories, fetching the classified ads"
+  desc "Iterates through all alerts, make a search through the keywords and send an email with the matches"
   task :alert_classifieds => :environment do
     Alert.all.each do |alert|
       puts "alerts for #{alert.email}.."

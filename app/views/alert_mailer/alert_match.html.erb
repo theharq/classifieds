@@ -4,15 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Hola</h1>
-    <p>
-      Listado de coincidencias para <%= Date.today %>
-    </p>
+    <h3>Listado de coincidencias en los clasificados el dia <%= Date.today %></h3>
     <ul>
       <% @classifieds.each do |classified| %>
         <li><%= classified.content %></li>
+        <hr>
       <% end %>
     </ul>
-    <p>Gracias</p>
   </body>
 </html>

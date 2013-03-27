@@ -1,14 +1,15 @@
 class AlertsController < ApplicationController
   def new
     @alert = Alert.new
+    render layout: false
   end
 
   def create
     @alert = Alert.new(params[:alert])
     if @alert.save
-      redirect_to root_path, notice: "Alerta creada sin problemas"
+      flash.now[:notice] = "Alerta creada exitosamente"
     else
-      render 'new', error: "Error, por favor verifica los datos ingresados"
+      flash.now[:error] = @alert.errors.full_messages
     end
   end
 end

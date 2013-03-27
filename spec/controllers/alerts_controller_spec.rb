@@ -44,23 +44,18 @@ describe AlertsController, "Actions" do
 
     it "creates a new Alert" do
       expect {
-          post :create, alert: @valid_params
+        xhr :post, :create, alert: @valid_params
         }.to change(Alert, :count).by(1)
     end
 
     it "assigns a newly created alert as @alert" do
-      post :create, alert: @valid_params
+      xhr :post, :create, alert: @valid_params
       assigns(:alert).should be_a(Alert)
     end
 
-    it "should redirect to index after success" do
-      post :create, alert: @valid_params
-      response.should redirect_to(root_path)
-    end
-
-    it "should render 'new' if there is a validation error" do
-      post :create
-      response.should render_template('new')
+    it "should display a flash with the error" do
+      xhr :post, :create
+      flash.now[:error].should_not be_nil
     end
   end
 

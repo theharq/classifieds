@@ -8,6 +8,8 @@ $(function(){ //ON DOCUMENT READY
     $('.loading').hide();
   });
 
-  $('.input-tag').tag({placeholder: "Ingrese palabras clave"});
+  $('body').on('hidden', '.modal', function () {
+    $(this).removeData('modal');
+  });
 
 }); // END ON READY

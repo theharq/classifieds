@@ -1,8 +1,22 @@
-= form_for @alert do |f|
-  %fieldset
-    = f.email_field :email, placeholder: 'Digite su Email'
-  %fieldset
-    = f.text_field :keywords, class: "input-tag"
-  %fieldset
-    = f.select :category_id, option_groups_from_collection_for_select(Section.all, :categories, :name, :id, :name, 91)
-  = f.submit "Crear Alerta"
+= form_for @alert, remote: true, html: {class: "form-horizontal"} do |f|
+  #flashes
+    = bootstrap_flash
+  .control-group
+    = f.label :email, class: "control-label"
+    .controls
+      = f.email_field :email, placeholder: 'Digite su Email'
+  .control-group
+    = f.label :keywords, class: "control-label"
+    .controls
+      = f.text_field :keywords, class: "input-tag"
+  .control-group
+    = f.label :category_id, "Categoria", class: "control-label"
+    .controls
+      = f.select :category_id, option_groups_from_collection_for_select(Section.all, :categories, :name, :id, :name, 91)
+  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+  = f.submit "Guardar", class: "btn btn-primary pull-right"
+
+:javascript
+  $(function(){
+    $('.input-tag').tag({placeholder: "Palabras clave, delimitado por coma"});
+  });

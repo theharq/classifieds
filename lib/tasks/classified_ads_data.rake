@@ -20,10 +20,10 @@ namespace :classifieds do
     Alert.all.each do |alert|
       puts "alerts for #{alert.email}.."
       classifieds = []
-      alert.keywords.split(",").each do |keyword|
-        classifieds =  classifieds | Classified.where("category_id = ?", alert.category_id).basic_search(content: keyword)
-      end
-      AlertMailer.alert_match(alert, classifieds).deliver
+      query = alert.keywords.split(",").join("|")
+      results = Classified.joins(:category).advanced_search(query).group_by(&:category)
+
+      AlertMailer.alert_match(alert, results).deliver if results.any?
     end
   end
 

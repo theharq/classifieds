@@ -9,10 +9,6 @@
     = f.label :keywords, class: "control-label"
     .controls
       = f.text_field :keywords, class: "input-tag"
-  .control-group
-    = f.label :category_id, "Categoria", class: "control-label"
-    .controls
-      = f.grouped_collection_select :category_id, Section.all, :categories, :name, :id, :name
   %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
   = link_to "Eliminar", alert_path(@alert), class: "btn btn-danger", method: :delete, remote: true
   = f.submit "Actualizar", class: "btn btn-primary pull-right"
